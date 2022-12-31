@@ -1,0 +1,12 @@
+.road {
+  background: url("../../../public/img/goudron.jpg");
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  .car {
+    img {
+        width: 6rem;
+    }
+  }
+}
