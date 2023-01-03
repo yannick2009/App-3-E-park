@@ -1,3 +1,9 @@
+.field {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 80% 20%;
+}
+
 .buttons {
   display: flex;
   flex-direction: column;
@@ -59,4 +65,22 @@
       background-color: green;
     }
   }
+}
+
+.road {
+  background: url("../../../public/img/goudron.jpg");
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  .car {
+    transition: 5s all;
+    img {
+      width: 6rem;
+    }
+  }
+}
+
+.move {
+  margin-bottom: 130%;
 }
