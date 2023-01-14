@@ -1,19 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import io from "socket.io-client";
 import "./styles/Field.scss";
+
+const socket = io.connect("ws://192.168.1.67:3001");
 
 function Field(props) {
   // USESTATES
   const [status, setStatus] = useState("Libre");
 
+  // IO
+
+  useEffect(() => {
+    socket.on(
+      "return_signal",
+      (data) => {
+        setStatus(data.message);
+      },
+      [socket, parkCar]
+    );
+  });
+
   const parkCar = () => {
+    socket.emit("park", true);
     setStatus("Occupé");
-    const status = "occupé";
-    props.onMove(status);
   };
   const unparkCar = () => {
     setStatus("Libre");
-    const status = "Libre";
-    props.onMove(status);
   };
 
   return (
