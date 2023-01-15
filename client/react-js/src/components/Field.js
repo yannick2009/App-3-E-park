@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import io from "socket.io-client";
 import "./styles/Field.scss";
 
@@ -10,21 +10,22 @@ function Field(props) {
 
   // IO
 
-  useEffect(() => {
-    socket.on(
-      "return_signal",
-      (data) => {
-        setStatus(data.message);
-      },
-      [socket, parkCar]
-    );
-  });
+  // useEffect(() => {
+  //   socket.on(
+  //     "return_signal",
+  //     (data) => {
+  //       setStatus(data.message);
+  //     },
+  //     [socket, parkCar]
+  //   );
+  // });
 
   const parkCar = () => {
-    socket.emit("park", true);
+    socket.emit("park", props.valu);
     setStatus("Occupé");
   };
   const unparkCar = () => {
+    socket.emit("unpark", props.valu);
     setStatus("Libre");
   };
 

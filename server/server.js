@@ -12,11 +12,13 @@ io.on('connection', (socket) => {
   console.log(`USER ID: ${socket.id}`);
 
   socket.on('park', (data) => {
-    // console.log(data);
     if (data) {
-      return socket.local.emit('return_signal', {
-        message: 'Occupé',
-      });
+      return socket.local.emit('return_signal_park', data);
+    }
+  });
+  socket.on('unpark', (data) => {
+    if (data) {
+      return socket.local.emit('return_signal_unpark', data);
     }
   });
 });
